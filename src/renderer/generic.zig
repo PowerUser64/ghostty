@@ -2895,13 +2895,6 @@ pub fn Renderer(comptime GraphicsAPI: type) type {
                         // Cells that are reversed should be fully opaque.
                         if (style.flags.inverse) break :bg_alpha default;
 
-                        // If the user requested to have opacity on all cells, apply it.
-                        if (self.config.background_opacity_cells and bg_style != null) {
-                            var opacity: f64 = @floatFromInt(default);
-                            opacity *= self.config.background_opacity;
-                            break :bg_alpha @intFromFloat(opacity);
-                        }
-
                         // Cells that have an explicit bg color should be fully opaque.
                         if (bg_style != null) break :bg_alpha default;
 

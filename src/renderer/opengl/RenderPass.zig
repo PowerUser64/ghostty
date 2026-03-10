@@ -131,9 +131,9 @@ pub fn step(self: *Self, s: Step) void {
         }
     } else {
         gl.enable(gl.c.GL_BLEND) catch return;
-        gl.blendFunc(gl.c.GL_SRC_ALPHA, gl.c.GL_ONE_MINUS_SRC_ALPHA) catch return;
+        // LEFT: background,  RIGHT: opaque cells
+        gl.blendFunc(gl.c.GL_DST_ALPHA, gl.c.GL_ONE_MINUS_SRC_ALPHA) catch return;
     }
-
     gl.drawArraysInstanced(
         s.draw.type,
         0,
